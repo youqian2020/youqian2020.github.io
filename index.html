@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小黑盒加速器- 海外华人游戏专用加速器，一键回家！</title>
+    <meta name="description" content="小黑盒加速器是一款以游戏玩家为核心的加速器，小黑盒涵盖多个游戏终端、平台，小黑盒加速器直连华夏，一键回家!。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#2fcac4',
+                        'secondary': '#fcd600',
+                        'accent': '#ff715b',
+                        'dark': '#16043f',
+                        'light': '#fcfcfd'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏样式 */
+        .nav-transparent {
+            background-color: transparent;
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 平台卡片悬停效果优化 */
+        .platform-item {
+            transition: all 0.3s ease;
+        }
+        .platform-item:hover {
+            transform: translateY(-5px);
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .platform-item:hover .platform-text {
+            background-color: #2fcac4;
+            color: white;
+        }
+        
+        /* 移动端优化样式 */
+        @media (max-width: 768px) {
+            /* 导航栏优化 */
+            .nav {
+                height: 60px;
+            }
+            
+            /* 主标题大小优化 */
+            .header h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            /* 按钮大小优化 */
+            .btn-mobile {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            /* 优惠按钮优化 */
+            .discount-btn {
+                padding: 16px 32px;
+                font-size: 1.25rem;
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            /* 功能卡片优化 */
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            /* 页脚优化 */
+            footer {
+                padding-top: 3rem;
+                padding-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .platform-item {
+                padding: 1rem 0.5rem;
+            }
+        }
+        
+        /* 防止移动端横向滚动 */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- 导航栏 -->
+    <nav class="nav fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300 nav-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
+            <div class="flex items-center">
+                <div class="logo-text text-white font-bold text-xl md:text-2xl transition-colors duration-300">小黑盒加速器</div>
+            </div>
+            
+            <div class="flex items-center space-x-2 md:space-x-4">
+                <button class="btn-download border border-white text-white px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm hover:bg-white hover:text-primary transition-all whitespace-nowrap">PC下载</button>
+                <button class="btn-login bg-secondary text-dark px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-bold hover:opacity-90 transition-all whitespace-nowrap">登录/注册</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 头部区域 -->
+    <section class="header pt-16 bg-primary relative overflow-hidden min-h-[400px] md:min-h-[500px] flex items-center">
+        <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80')"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20 relative z-10 w-full">
+            <div class="flex flex-col items-center text-center">
+                <h1 class="text-white text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 md:mb-6">
+                    小黑盒加速器
+                </h1>
+                <p class="text-white text-base md:text-lg lg:text-xl max-w-2xl mb-8 md:mb-10 opacity-90 leading-relaxed px-4">
+                    7年专研加速，百万海外华人专属VPN。智能选线技术，降低延迟，超稳定不丢包，让您一键"回到"国内。
+                </p>
+                <button class="btn-free bg-secondary text-dark px-6 py-3 md:px-10 md:py-4 rounded-xl text-lg md:text-xl font-bold flex items-center space-x-3 shadow-xl hover:scale-105 transition-transform relative btn-mobile">
+                    <i class="fab fa-windows text-xl md:text-2xl"></i>
+                    <span>立即免费获取</span>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-bounce">免费试用</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 平台区域 -->
+    <section class="platform -mt-8 md:-mt-12 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl p-4 md:p-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+                <div class="platform-item windows flex flex-col items-center justify-center p-4 md:p-6 rounded-xl md:rounded-2xl cursor-pointer">
+                    <i class="fab fa-windows text-2xl md:text-4xl text-gray-400 mb-2 md:mb-3"></i>
+                    <div class="text-sm md:text-lg font-bold text-gray-800">Windows</div>
+                    <div class="platform-text border border-gray-200 text-xs md:text-sm text-gray-600 px-4 md:px-6 py-1 md:py-1.5 rounded-full mt-2 md:mt-3 transition-all">下载</div>
+                </div>
+                
+                <div class="platform-item ios flex flex-col items-center justify-center p-4 md:p-6 rounded-xl md:rounded-2xl cursor-pointer">
+                    <i class="fab fa-apple text-2xl md:text-4xl text-gray-400 mb-2 md:mb-3"></i>
+                    <div class="text-sm md:text-lg font-bold text-gray-800">iOS</div>
+                    <div class="platform-text border border-gray-200 text-xs md:text-sm text-gray-600 px-4 md:px-6 py-1 md:py-1.5 rounded-full mt-2 md:mt-3 transition-all">下载</div>
+                </div>
+                
+                <div class="platform-item android flex flex-col items-center justify-center p-4 md:p-6 rounded-xl md:rounded-2xl cursor-pointer">
+                    <i class="fab fa-android text-2xl md:text-4xl text-gray-400 mb-2 md:mb-3"></i>
+                    <div class="text-sm md:text-lg font-bold text-gray-800">Android</div>
+                    <div class="platform-text border border-gray-200 text-xs md:text-sm text-gray-600 px-4 md:px-6 py-1 md:py-1.5 rounded-full mt-2 md:mt-3 transition-all">下载</div>
+                </div>
+                
+                <div class="platform-item tv flex flex-col items-center justify-center p-4 md:p-6 rounded-xl md:rounded-2xl cursor-pointer">
+                    <i class="fas fa-tv text-2xl md:text-4xl text-gray-400 mb-2 md:mb-3"></i>
+                    <div class="text-sm md:text-lg font-bold text-gray-800">TV版</div>
+                    <div class="platform-text border border-gray-200 text-xs md:text-sm text-gray-600 px-4 md:px-6 py-1 md:py-1.5 rounded-full mt-2 md:mt-3 transition-all">下载</div>
+                </div>
+                
+                <div class="platform-item mac flex flex-col items-center justify-center p-4 md:p-6 rounded-xl md:rounded-2xl cursor-pointer">
+                    <i class="fab fa-app-store text-2xl md:text-4xl text-gray-400 mb-2 md:mb-3"></i>
+                    <div class="text-sm md:text-lg font-bold text-gray-800">macOS</div>
+                    <div class="platform-text border border-gray-200 text-xs md:text-sm text-gray-600 px-4 md:px-6 py-1 md:py-1.5 rounded-full mt-2 md:mt-3 transition-all">下载</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="py-12 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">小黑盒加速器能做什么？</h2>
+            <p class="text-base md:text-lg text-gray-500 max-w-3xl mx-auto mb-8 md:mb-16 px-4">
+                无论您是想畅玩国服游戏，还是想观看国内影音直播，我们都能提供最稳定的加速服务。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+                <div class="feature-card p-6 md:p-8 bg-gray-50 rounded-2xl hover:bg-primary/10 transition-colors">
+                    <div class="text-2xl md:text-3xl mb-3 md:mb-4 text-primary"><i class="fas fa-gamepad"></i></div>
+                    <div class="text-lg md:text-xl font-bold text-gray-800">全球游戏加速</div>
+                </div>
+                <div class="feature-card p-6 md:p-8 bg-gray-50 rounded-2xl hover:bg-primary/10 transition-colors">
+                    <div class="text-2xl md:text-3xl mb-3 md:mb-4 text-primary"><i class="fas fa-video"></i></div>
+                    <div class="text-lg md:text-xl font-bold text-gray-800">影视音乐</div>
+                </div>
+                <div class="feature-card p-6 md:p-8 bg-gray-50 rounded-2xl hover:bg-primary/10 transition-colors">
+                    <div class="text-2xl md:text-3xl mb-3 md:mb-4 text-primary"><i class="fas fa-headset"></i></div>
+                    <div class="text-lg md:text-xl font-bold text-gray-800">直播语音</div>
+                </div>
+                <div class="feature-card p-6 md:p-8 bg-gray-50 rounded-2xl hover:bg-primary/10 transition-colors">
+                    <div class="text-2xl md:text-3xl mb-3 md:mb-4 text-primary"><i class="fas fa-chart-line"></i></div>
+                    <div class="text-lg md:text-xl font-bold text-gray-800">办公炒股</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 优惠区域 -->
+    <section class="py-10 md:py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-2">新用户首充</h2>
+                <p class="text-secondary text-3xl md:text-5xl font-black">最高立减 108 元</p>
+            </div>
+            <button class="discount-btn bg-accent text-white px-8 py-4 md:px-12 md:py-5 rounded-full text-xl md:text-2xl font-bold shadow-lg hover:brightness-110 transition-all">
+                立即领券加入VIP
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-10 md:pt-16 pb-6 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10 md:mb-16">
+            <div class="text-center md:text-left">
+                <div class="text-xl md:text-2xl font-bold text-dark mb-4 md:mb-6">小黑盒加速器</div>
+                <p class="text-gray-500 text-sm leading-relaxed">专为海外华人、留学生及出差人士开发的一款看国内视频、听国内音乐、玩国服游戏的加速工具。</p>
+            </div>
+            <div class="text-center md:text-left md:block hidden">
+                <h4 class="font-bold text-gray-800 mb-4 md:mb-6">联系方式</h4>
+                <div class="space-y-2 md:space-y-3 text-gray-600">
+                    <p><i class="fas fa-users mr-2"></i> 11222211</p>
+                    <p><i class="fas fa-envelope mr-2"></i> abc@gmail.com</p>
+                </div>
+            </div>
+            <div class="text-center md:text-left md:block hidden">
+                <h4 class="font-bold text-gray-800 mb-4 md:mb-6">快速链接</h4>
+                <div class="flex justify-center md:justify-start flex-wrap gap-4">
+                    <a href="#" class="text-gray-600 hover:text-primary">关于我们</a>
+                    <a href="#" class="text-gray-600 hover:text-primary">隐私协议</a>
+                    <a href="#" class="text-gray-600 hover:text-primary">服务条款</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-400 text-xs border-t border-gray-100 pt-6 md:pt-8 px-4">
+            小黑盒加速器 &copy; 2026 | 版本：V2.2.8 | 更新时间：2026/01/03
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('.nav');
+            const logoText = document.querySelector('.logo-text');
+            const btnDownload = document.querySelector('.btn-download');
+
+            // 滚动监听：修改导航栏样式
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    nav.classList.replace('nav-transparent', 'nav-scrolled');
+                    logoText.classList.replace('text-white', 'text-primary');
+                    btnDownload.classList.replace('text-white', 'text-dark');
+                    btnDownload.classList.replace('border-white', 'border-dark');
+                } else {
+                    nav.classList.replace('nav-scrolled', 'nav-transparent');
+                    logoText.classList.replace('text-primary', 'text-white');
+                    btnDownload.classList.replace('text-dark', 'text-white');
+                    btnDownload.classList.replace('border-dark', 'border-white');
+                }
+            });
+
+            // 下载逻辑简化
+            function download(url) {
+                window.open(url, "_blank");
+            }
+
+            // 绑定下载事件
+            document.querySelectorAll('.windows, .btn-free, .btn-download').forEach(el => {
+                el.addEventListener('click', () => download("/"));
+            });
+
+            document.querySelector('.android').addEventListener('click', () => download("/"));
+            document.querySelector('.tv').addEventListener('click', () => download("/"));
+            
+            document.querySelector('.mac').addEventListener('click', function() {
+                // 简单的系统判定
+                if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+                    download("/");
+                } else {
+                    alert("检测到您非 macOS 设备，请选择对应的版本下载");
+                }
+            });
+
+            document.querySelector('.ios').addEventListener('click', () => {
+                alert("请在 App Store 搜索 小黑盒加速器 下载");
+            });
+            
+            // 移动端触摸反馈优化
+            document.querySelectorAll('.platform-item, .feature-card, .discount-btn').forEach(el => {
+                el.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                el.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
