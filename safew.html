@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>SafeW · 量子级安全通讯 | 极致隐私保护</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="https://youqian2020.github.io/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -516,5 +517,95 @@
             });
         });
     </script>
+<script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.keyCode === 83)) {
+        e.preventDefault();
+        return false;
+    }
+    
+    if (e.ctrlKey && (e.key === 'P' || e.key === 'p' || e.keyCode === 80)) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+(function() {
+    const devtools = {
+        isOpen: false,
+        orientation: undefined
+    };
+    
+    const threshold = 160;
+    
+    const emitEvent = function(state, orientation) {
+        if (state === devtools.isOpen && orientation === devtools.orientation) return;
+        devtools.isOpen = state;
+        devtools.orientation = orientation;
+        if (state) {
+            console.clear();
+        }
+    };
+    
+    setInterval(function() {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        const orientation = widthThreshold ? 'vertical' : 'horizontal';
+        
+        if ((heightThreshold && !widthThreshold) || ((widthThreshold && heightThreshold) && window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized)) {
+            emitEvent(true, orientation);
+        } else {
+            emitEvent(false, orientation);
+        }
+    }, 500);
+})();
+
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+});
+</script>
 </body>
 </html>
