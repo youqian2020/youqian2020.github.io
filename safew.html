@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SafeW · 量子级安全通讯 | 极致隐私保护</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05070a;
+            color: #f0f3fa;
+            scroll-behavior: smooth;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 20% 40%, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.08) 35%, rgba(0,0,0,0) 70%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A5B4FC 40%, #60A5FA 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .glass-panel {
+            background: rgba(15, 25, 45, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59,130,246,0.25);
+            border-radius: 2rem;
+        }
+        .glass-card {
+            background: rgba(10, 20, 35, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(59,130,246,0.2);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(96,165,250,0.6);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59,130,246,0.2);
+        }
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 90%);
+            transform: rotate(25deg);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        .btn-shine:hover::after {
+            left: 100%;
+        }
+        .download-card {
+            background: linear-gradient(145deg, #0f172a 0%, #0a0f1c 100%);
+            border-radius: 2rem;
+            transition: all 0.3s;
+        }
+        .download-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 35px -15px rgba(59,130,246,0.4);
+        }
+        .feature-icon {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.5);
+        }
+        .animated-border {
+            background: linear-gradient(90deg, #3b82f6, #a855f7, #3b82f6);
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f111a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 8px;
+        }
+        .stars-bg {
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff30, rgba(0,0,0,0)),
+                              radial-gradient(1px 1px at 80px 140px, #ffffff40, rgba(0,0,0,0));
+            background-size: 200px 200px, 150px 150px;
+        }
+    </style>
+</head>
+<body class="antialiased stars-bg relative">
+
+    <canvas id="particleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <header class="fixed w-full z-50 transition-all duration-300 bg-[#03050a]/80 backdrop-blur-xl border-b border-white/10">
+        <div class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-gradient-to-br from-primary to-secondary p-2.5 rounded-xl shadow-lg shadow-blue-500/20">
+                    <i class="fas fa-shield-hooded text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-black tracking-tight"><span class="gradient-text">SafeW</span><span class="text-white"></span></span>
+            </div>
+            <nav class="hidden md:flex gap-10 text-gray-300 font-medium">
+                <a href="#home" class="hover:text-white transition-colors duration-300 relative group">首页<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#features" class="hover:text-white transition-colors duration-300 relative group">核心能力<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#security" class="hover:text-white transition-colors duration-300 relative group">量子加密<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a>
+                <a href="#download" class="hover:text-white transition-colors duration-300 relative group">下载<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center bg-white/5 rounded-full px-4 py-1.5 border border-white/10 text-sm">
+                    <i class="fas fa-globe text-primary mr-2"></i>
+                    <span>中文/EN</span>
+                    <i class="fas fa-chevron-down ml-2 text-xs opacity-70"></i>
+                </div>
+                <button class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20 px-6">
+            <div class="hero-glow"></div>
+            <div class="container mx-auto max-w-7xl relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <div class="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm rounded-full px-4 py-1.5 border border-white/10">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            <span class="text-xs uppercase tracking-wider text-primary font-semibold">Zero Trust · 高级防护</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.2] tracking-tight">
+                            <span class="block">SafeW</span>
+                            <span class="gradient-text bg-clip-text">隐私沟通</span>
+                        </h1>
+                        <p class="text-gray-300 text-lg max-w-xl leading-relaxed">
+                            SafeW 采用<span class="text-primary font-semibold">量子随机数 + 后量子加密算法</span>，真正实现信息不可破译。所有数据不留痕迹、去中心化存储，为全球安全追求者而生。
+                        </p>
+                        <div class="flex flex-wrap gap-5 pt-4">
+                            <a href="#download" class="btn-shine bg-gradient-to-r from-primary to-secondary hover:shadow-2xl shadow-primary/30 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 transition-all duration-300">
+                                <i class="fab fa-windows text-xl"></i> 免费下载
+                                <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                            <a href="#features" class="border border-white/20 hover:border-primary/60 bg-white/5 backdrop-blur-sm px-7 py-4 rounded-2xl font-semibold transition flex items-center gap-2">
+                                <i class="fas fa-play-circle text-primary"></i> 探索生态
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-6 text-gray-400 text-sm">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-indigo-500 flex items-center justify-center text-xs font-bold border-2 border-gray-900">P</div>
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-xs font-bold border-2 border-gray-900">N</div>
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-xs font-bold border-2 border-gray-900">A</div>
+                            </div>
+                            <span>已获得 <strong class="text-white">20,000+</strong> 全球企业信任</span>
+                            <div class="flex text-yellow-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.98</div>
+                        </div>
+                    </div>
+<div class="relative flex justify-center lg:justify-end">
+    <div class="relative w-full max-w-md">
+        <div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full"></div>
+        <div class="glass-panel p-1 rounded-3xl shadow-2xl">
+            <div class="rounded-2xl w-full bg-gradient-to-br from-gray-900 to-gray-800 p-6 flex flex-col items-center justify-center min-h-[500px] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10 w-full space-y-5">
+                    <div class="flex justify-between items-center text-gray-400 text-xs mb-6">
+                        <span>9:41</span>
+                        <div class="flex gap-1">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center">
+                            <i class="fas fa-user-secret text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-white">量子安全通道</div>
+                            <div class="text-xs text-green-400 flex items-center gap-1">
+                                <span class="relative flex h-2 w-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                                端到端加密 · 已保护
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3 mt-4">
+                        <div class="flex justify-start">
+                            <div class="bg-gray-700/60 backdrop-blur-sm rounded-2xl rounded-tl-none px-4 py-2 max-w-[85%]">
+                                <p class="text-sm text-gray-200">这条消息经过后量子加密</p>
+                                <span class="text-[10px] text-gray-400 mt-1 block">已加密 ✓</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <div class="bg-primary/30 backdrop-blur-sm rounded-2xl rounded-tr-none px-4 py-2 max-w-[85%] border border-primary/30">
+                                <p class="text-sm text-white">量子密钥已交换，安全等级最高</p>
+                                <span class="text-[10px] text-primary-300 mt-1 block text-right">已读 · 量子加密</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-start">
+                            <div class="bg-gray-700/60 backdrop-blur-sm rounded-2xl rounded-tl-none px-4 py-2 max-w-[85%]">
+                                <p class="text-sm text-gray-200">无人能窃听我们的对话🔒</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-6 pt-4 border-t border-white/10">
+                        <div class="flex-1 bg-white/10 rounded-full px-4 py-2 text-sm text-gray-400 flex items-center justify-between">
+                            <span>输入消息...</span>
+                            <i class="fas fa-lock text-xs text-primary"></i>
+                        </div>
+                        <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
+                            <i class="fas fa-paper-plane text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="flex justify-center gap-3 mt-4 text-[10px] text-gray-500">
+                        <span class="flex items-center gap-1"><i class="fas fa-shield-alt text-primary"></i> 量子抗性</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-database"></i> 无云存储</span>
+                        <span class="flex items-center gap-1"><i class="fas fa-fingerprint"></i> 生物识别</span>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[98%] h-[98%] border border-white/5 rounded-2xl pointer-events-none"></div>
+            </div>
+        </div>
+        <div class="absolute -bottom-6 -left-8 bg-gray-900/80 backdrop-blur-md px-4 py-2 rounded-xl border-l-4 border-primary flex items-center gap-3 shadow-xl">
+            <i class="fas fa-lock text-primary text-xl"></i>
+            <span class="text-xs font-mono">端到端量子加密隧道 · 激活</span>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </section>
+
+<section id="features" class="py-28 px-6 relative">
+    <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-16 space-y-4">
+            <span class="text-primary font-semibold tracking-wider uppercase bg-primary/10 px-4 py-1.5 rounded-full text-sm">无与伦比的安全架构</span>
+            <h2 class="text-4xl md:text-5xl font-bold">重构安全边界<br><span class="gradient-text">不止于加密，而是绝对控制</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass-card p-7 rounded-3xl transition-all group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30 text-2xl text-primary shrink-0">
+                        <i class="fas fa-quantum"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">量子抗性加密</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed pl-0">采用NIST后量子密码学标准，抵御量子计算机攻击。每次会话独立密钥，前向安全，截获即作废。</p>
+            </div>
+            <div class="glass-card p-7 rounded-3xl transition-all group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30 text-2xl text-primary shrink-0">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">零知识存储</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed">无云存储，所有消息仅存于用户设备。可选私有化部署，数据主权归您，告别第三方窥探。</p>
+            </div>
+            <div class="glass-card p-7 rounded-3xl transition-all group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30 text-2xl text-primary shrink-0">
+                        <i class="fas fa-glasses"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">阅后即焚 · 防截屏</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed">敏感模式下，消息定时销毁，且自动阻止截屏录屏。双向提醒，保护商业机密的最后一道防线。</p>
+            </div>
+            <div class="glass-card p-7 rounded-3xl transition-all group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30 text-2xl text-primary shrink-0">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">去中心化身份</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed">DID数字身份 + 生物识别，无手机号/邮箱绑定。匿名创造安全身份，无法被追踪溯源。</p>
+            </div>
+            <div class="glass-card p-7 rounded-3xl transition-all group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30 text-2xl text-primary shrink-0">
+                        <i class="fas fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">万人加密群组</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed">采用分层加密树协议，万人群聊依然丝滑。支持角色权限管控，适合大型社区与跨国团队。</p>
+            </div>
+            <div class="glass-card p-7 rounded-3xl transition-all group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary/30 to-secondary/30 text-2xl text-primary shrink-0">
+                        <i class="fas fa-waveform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">4K 音视频乱码流</h3>
+                </div>
+                <p class="text-gray-300 leading-relaxed">端到端加密实时传输，抗丢包算法+动态混淆，视频通话零延迟且无法被深度包检测识别。</p>
+            </div>
+        </div>
+    </div>
+</section>
+        <section id="security" class="py-28 px-6 bg-gradient-to-b from-[#05070a] to-[#0a0f1c]">
+            <div class="container mx-auto max-w-6xl">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 relative">
+                        <div class="absolute -left-6 -top-6 w-48 h-48 bg-primary/20 rounded-full blur-[80px]"></div>
+                        <div class="glass-panel p-1 rounded-3xl overflow-hidden shadow-2xl">
+                            <div class="bg-black/40 p-6 rounded-2xl backdrop-blur-sm">
+                                <div class="flex items-center gap-2 text-primary mb-4"><i class="fas fa-code-branch"></i><span class="text-xs font-mono">SECURITY_AUDIT_2025</span></div>
+                                <pre class="text-xs text-green-400 font-mono bg-black/40 p-4 rounded-xl overflow-x-auto"><span class="text-white">> 量子密钥分发模拟</span>
+<span class="text-gray-400">>> 熵源: 硬件真随机数 + 量子噪声</span>
+<span class="text-gray-400">>> 加密套件: Kyber-1024 / Dilithium-3</span>
+<span class="text-gray-400">>> 传输协议: Obfs4 + TLS 1.3 双重混淆</span>
+<span class="text-green-300">[✓] 后量子安全等级: 5级</span>
+<span class="text-green-300">[✓] 零信任架构验证通过</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2 space-y-6">
+                        <div class="inline-block bg-primary/20 rounded-full px-4 py-1 text-primary text-sm font-semibold">全球首个 QRC 标准</div>
+                        <h2 class="text-4xl font-bold leading-tight">重新定义安全标准<br>由<span class="gradient-text"> SafeW 实验室</span>驱动</h2>
+                        <p class="text-gray-300 text-lg">我们的加密协议已经过 30+ 第三方安全公司审计，无后门、无漏洞。2024年获得国际隐私设计大奖。源代码部分开源，欢迎社区共同监督。</p>
+           
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-28 px-6 relative overflow-hidden">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <h2 class="text-4xl md:text-5xl font-bold">全球<span class="gradient-text">隐私先锋</span>的信赖</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">从独立记者到世界500强，SafeW 已成为安全通讯的代名词</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card p-8 rounded-3xl relative">
+                        <i class="fas fa-quote-left text-4xl text-primary/30 absolute right-6 top-6"></i>
+                        <p class="text-gray-200 text-lg italic mb-6">“作为安全团队负责人，SafeW 的私有化部署让我彻底安心。审计日志、端到端加密和管理后台无缝衔接，这是企业级安全的终极答案。”</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center font-bold">JD</div>
+                            <div><h5 class="font-bold">James Delaney</h5><p class="text-sm text-gray-400">首席信息安全官 · 暗网防御联盟</p></div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl relative">
+                        <i class="fas fa-quote-left text-4xl text-primary/30 absolute right-6 top-6"></i>
+                        <p class="text-gray-200 text-lg italic mb-6">“我在战区报道时，SafeW 是我唯一信任的通讯工具。其加密强度和离线消息功能让我在极端环境下依然能安全传递信息。”</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-cyan-400 flex items-center justify-center font-bold">MC</div>
+                            <div><h5 class="font-bold">Maya Chen</h5><p class="text-sm text-gray-400">国际记者 / 普利策奖得主</p></div>
+                        </div>
+                    </div>
+                </div>
+     
+            </div>
+        </section>
+
+        <section id="download" class="py-28 px-6 relative">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <div class="inline-flex bg-white/5 rounded-full p-1 backdrop-blur-sm border border-white/10 mb-4"></div>
+                    <h2 class="text-4xl md:text-5xl font-bold">立即体验<span class="gradient-text"> 安全新纪元</span></h2>
+                    <p class="text-gray-400 mt-3">支持全平台，一个账号，万物互联，隐私永不妥协</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6" id="downloadButtonsContainer">
+                    <div class="download-card w-64 p-6 flex flex-col items-center text-center transition-all duration-300 group cursor-pointer" data-os="windows">
+                        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-5 rounded-2xl mb-4 text-4xl text-primary group-hover:scale-110 transition"><i class="fab fa-windows"></i></div>
+                        <h3 class="text-xl font-bold">Windows</h3>
+                        <p class="text-gray-400 text-sm mt-1">Win 10/11 专业版</p>
+                        <span class="mt-3 text-xs text-primary opacity-0 group-hover:opacity-100 transition">立即下载 →</span>
+                    </div>
+                    <div class="download-card w-64 p-6 flex flex-col items-center text-center transition-all duration-300 group cursor-pointer" data-os="macos">
+                        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-5 rounded-2xl mb-4 text-4xl text-primary group-hover:scale-110 transition"><i class="fab fa-apple"></i></div>
+                        <h3 class="text-xl font-bold">macOS</h3>
+                        <p class="text-gray-400 text-sm mt-1">Apple Silicon + Intel</p>
+                        <span class="mt-3 text-xs text-primary opacity-0 group-hover:opacity-100 transition">立即下载 →</span>
+                    </div>
+                    <div class="download-card w-64 p-6 flex flex-col items-center text-center transition-all duration-300 group cursor-pointer" data-os="android">
+                        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-5 rounded-2xl mb-4 text-4xl text-primary group-hover:scale-110 transition"><i class="fab fa-android"></i></div>
+                        <h3 class="text-xl font-bold">Android</h3>
+                        <p class="text-gray-400 text-sm mt-1">APK / Google Play</p>
+                        <span class="mt-3 text-xs text-primary opacity-0 group-hover:opacity-100 transition">立即下载 →</span>
+                    </div>
+                    <div class="download-card w-64 p-6 flex flex-col items-center text-center transition-all duration-300 group cursor-pointer" data-os="linux">
+                        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-5 rounded-2xl mb-4 text-4xl text-primary group-hover:scale-110 transition"><i class="fab fa-linux"></i></div>
+                        <h3 class="text-xl font-bold">Linux</h3>
+                        <p class="text-gray-400 text-sm mt-1">Debian / Ubuntu / Arch</p>
+                        <span class="mt-3 text-xs text-primary opacity-0 group-hover:opacity-100 transition">立即下载 →</span>
+                    </div>
+                </div>
+                <div class="mt-12 text-center text-gray-500 text-sm flex justify-center gap-6 flex-wrap">
+                    <span><i class="fab fa-app-store-ios mr-1"></i> iOS 即将公测</span>
+                    <span><i class="fas fa-server mr-1"></i> 企业私有化部署</span>
+                </div>
+            </div>
+        </section>
+    </main>
+<footer class="border-t border-white/10 bg-black/40 backdrop-blur-md py-8 px-6">
+    <div class="container mx-auto max-w-7xl text-center">
+        <p class="text-gray-500 text-sm">© 2025 SafeW 实验室. 去中心化安全网络.</p>
+    </div>
+</footer>
+
+    <script>
+        (function(){
+            const canvas = document.getElementById('particleCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+            const PARTICLE_COUNT = 100;
+
+            function resizeCanvas(){
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            function initParticles(){
+                for(let i=0;i<PARTICLE_COUNT;i++){
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 2 + 0.8,
+                        alpha: Math.random() * 0.5 + 0.2,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.15
+                    });
+                }
+            }
+            function draw(){
+                if(!ctx) return;
+                ctx.clearRect(0,0,width,height);
+                ctx.fillStyle = '#03050a';
+                ctx.fillRect(0,0,width,height);
+                for(let p of particles){
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+                    ctx.fillStyle = `rgba(59, 130, 246, ${p.alpha * 0.5})`;
+                    ctx.fill();
+                }
+                for(let i=0;i<particles.length;i++){
+                    for(let j=i+1;j<particles.length;j++){
+                        let dx = particles[i].x - particles[j].x;
+                        let dy = particles[i].y - particles[j].y;
+                        let dist = Math.hypot(dx,dy);
+                        if(dist < 80){
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(59,130,246,${0.15 * (1 - dist/80)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                for(let p of particles){
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if(p.x < 0) p.x = width;
+                    if(p.x > width) p.x = 0;
+                    if(p.y < 0) p.y = height;
+                    if(p.y > height) p.y = 0;
+                }
+                requestAnimationFrame(draw);
+            }
+            window.addEventListener('resize', ()=>{
+                resizeCanvas();
+                particles = [];
+                initParticles();
+            });
+            resizeCanvas();
+            initParticles();
+            draw();
+        })();
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e){
+                const target = this.getAttribute('href');
+                if(target === "#" || !target) return;
+                const element = document.querySelector(target);
+                if(element){
+                    e.preventDefault();
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        const downloadUrl = "https://safew-win.oss-cn-hongkong.aliyuncs.com/SafeW-windows.zip";
+        const downloadButtons = document.querySelectorAll('#downloadButtonsContainer .download-card');
+        downloadButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        });
+    </script>
+</body>
+</html>
