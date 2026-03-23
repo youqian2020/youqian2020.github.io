@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>压缩包 - 领先的压缩与加密解决方案</title>
+    <link rel="icon" href="https://youqian2020.github.io/winrarfavicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
+            color: #f8fafc;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+         .hero-slide { display: none; opacity: 0; transition: opacity 1s ease-in-out; }
+        .hero-slide.active { display: block; opacity: 1; }
+
+         .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
+ .glass-nav {
+    background: rgb(34 34 34 / 0.8);  
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+    </style>
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center group">
+                <img src="https://youqian2020.github.io/winrarlogo.png" alt="压缩包 Logo" class="h-10 w-auto transition-transform group-hover:scale-105">
+            </a>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium text-slate-400">
+                <a href="#features" class="hover:text-white transition">功能优势</a>
+                <a href="#tech" class="hover:text-white transition">技术规格</a>
+                <a href="#tech" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-500 transition btn-glow">获取软件</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-10 gap-6 items-stretch">
+            
+            <div class="lg:col-span-4 glass rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-center relative overflow-hidden">
+                <div class="relative z-10">
+                    <span class="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold mb-6 border border-blue-500/20">
+                        Stable Release v6.24
+                    </span>
+                    <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                        专业压缩<br><span class="text-blue-500">从未如此简单</span>
+                    </h1>
+                    <p class="text-slate-400 mb-8 leading-relaxed">
+                        支持 RAR、ZIP 及多种格式解压，采用 AES-256 位加密算法，守护您的数据安全。
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <a href="#tech" class="w-full bg-white text-slate-900 py-4 rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-blue-50 transition btn-glow">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1V11.7H0V3.449zm0 17.1L9.75 21.9V12.3H0v8.249zM10.5 2L24 0v11.7H10.5V2zm0 19.9L24 24V12.3H10.5v9.6z"/></svg>
+                            立即获取压缩包
+                        </a>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#tech" class="bg-slate-800/50 border border-white/10 py-3 rounded-xl font-bold text-sm text-center hover:bg-slate-700 transition">
+                                64位版本
+                            </a>
+                            <a href="#tech" class="bg-slate-800/50 border border-white/10 py-3 rounded-xl font-bold text-sm text-center hover:bg-slate-700 transition">
+                                查看详情
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="lg:col-span-6 glass rounded-[2.5rem] overflow-hidden relative group min-h-[400px]">
+                <div id="carousel">
+                    <div class="hero-slide active h-full w-full">
+                        <img src="https://www.winrar.com.cn/images/ban720.jpg" class="w-full h-full object-cover" alt="Banner 1">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-10">
+                            <h3 class="text-2xl font-bold">官方正版 纯净体验</h3>
+                        </div>
+                    </div>
+                    <div class="hero-slide h-full w-full">
+                        <img src="https://www.winrar.com.cn/images/zs.jpg" class="w-full h-full object-cover" alt="Banner 2">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-10">
+                            <h3 class="text-2xl font-bold">RAR 5.0 强力压缩协议</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="absolute bottom-6 right-6 flex gap-2">
+                    <button onclick="prevSlide()" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/20 transition">←</button>
+                    <button onclick="nextSlide()" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/20 transition">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="glass p-8 rounded-[2rem] hover:border-blue-500/50 transition group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="text-3xl bg-blue-500/10 w-12 h-12 flex items-center justify-center rounded-xl group-hover:scale-110 transition">🔒</div>
+                    <h3 class="text-xl font-bold">AES-256 加密升级</h3>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    CBC 模式加密算法由 AES-128 升级至 AES-256，配合 HMAC-SHA256 关键推导函数，安全性大幅提升。
+                </p>
+            </div>
+
+            <div class="glass p-8 rounded-[2rem] hover:border-blue-500/50 transition group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="text-3xl bg-blue-500/10 w-12 h-12 flex items-center justify-center rounded-xl group-hover:scale-110 transition">⚡</div>
+                    <h3 class="text-xl font-bold">1GB 压缩字典</h3>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    64位版本支持高达 1GB 的字典大小，显著提升大文件及重复数据的压缩率。
+                </p>
+            </div>
+
+            <div class="glass p-8 rounded-[2rem] hover:border-blue-500/50 transition group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="text-3xl bg-blue-500/10 w-12 h-12 flex items-center justify-center rounded-xl group-hover:scale-110 transition">🌍</div>
+                    <h3 class="text-xl font-bold">UTC 时间标准</h3>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    存储为协调世界时 (UTC)，解决跨时区文件交流的时间偏差，协作更精准。
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="tech" class="py-24 px-6 bg-slate-950/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-12">技术规格与下载详情</h2>
+            <div class="glass rounded-[3rem] p-8 md:p-12 border-blue-500/20">
+                <div class="grid md:grid-cols-2 gap-10 text-left">
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-bold text-white">格式支持</h4>
+                            <p class="text-slate-400 text-sm">完善支持 RAR5, ZIP, CAB, ARJ, LZH, TAR, GZ, ISO, XZ 等。</p>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-bold text-white">压缩包.ini</h4>
+                            <p class="text-slate-400 text-sm">支持通过配置文件管理设置，适合企业批量部署。</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-bold text-white">安全性提示</h4>
+                            <p class="text-slate-400 text-sm">为确保可靠性，已移除旧版的“身份验证”功能，推荐使用 AES-256。</p>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-bold text-white">字典限制</h4>
+                            <p class="text-slate-400 text-sm">32位版本创建文件时支持最高 256MB 字典。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <button onclick="handleDownload('win64')" class="px-10 py-4 bg-blue-600 rounded-xl font-bold text-lg hover:bg-blue-500 transition btn-glow">下载 压缩包 64位</button>
+                 </div>
+                <p class="mt-6 text-slate-500 text-xs text-center">所有下载链接均指向官方正版服务器，请放心使用。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center text-slate-500 text-xs border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <p>© 2026 压缩包 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+         const DOWNLOAD_URLS = {
+            latest: 'https://www.winrar.com.cn/download.html',
+            win64: 'https://www.winrar.com.cn/download/winrar-x64-624sc.exe',
+            win32: 'https://www.winrar.com.cn/download/winrar-x32-624sc.exe'
+        };
+
+         function handleDownload(type) {
+            const url = DOWNLOAD_URLS[type];
+            const win = window.open(url, '_blank', 'noopener,noreferrer');
+            if (win) win.opener = null;
+        }
+
+         let current = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+
+        function showSlide(idx) {
+            slides.forEach(s => s.classList.remove('active'));
+            current = (idx + slides.length) % slides.length;
+            slides[current].classList.add('active');
+        }
+
+        function nextSlide() { showSlide(current + 1); }
+        function prevSlide() { showSlide(current - 1); }
+
+         setInterval(nextSlide, 6000);
+    </script>
+</body>
+</html>

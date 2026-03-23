@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快连Lets - 全球一键连接</title>
+    <link rel="icon" href="https://youqian2020.github.io/klfavicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #5127f8 0%, #8251f5 50%, #a457f3 100%);
+            background-attachment: fixed;
+            color: white;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .testimonial-slide { display: none; }
+        .testimonial-slide.active { display: block; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body id="home" class="font-sans antialiased">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <img src="https://youqian2020.github.io/letslogo.png" alt="Logo" class="h-10 w-auto transition-transform group-hover:scale-110">
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#features" class="hover:text-blue-200 transition">核心优势</a>
+                <a href="#testimonials" class="hover:text-blue-200 transition">用户口碑</a>
+                <a href="#download-section" class="bg-white text-blue-700 px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">立即拥有</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 border border-white/30 text-sm font-bold">
+                    <i class="fas fa-shield-alt text-xs"></i>
+                    <span>已获得 AppEsteem 认证</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                   快连Lets <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">永远能连上</span>
+                </h1>
+                <p class="text-xl text-blue-100 max-w-lg leading-relaxed">
+                    3s 极速连接，采用全新 AI 内核，自动匹配全球最快节点，无论天涯海角，纵享丝滑冲浪。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#download-section" class="px-10 py-4 bg-white text-blue-700 rounded-2xl font-black text-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all active:scale-95 inline-block">获取客户端</a>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://youqian2020.github.io/home_right.png" alt="UI Display" class="w-full h-auto drop-shadow-2xl">
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-16">为什么选择快连</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-8 rounded-3xl flex items-center gap-6 group hover:bg-white/20 transition">
+                    <div class="text-4xl">⚡</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">一键"快连"，纵享丝滑</h3>
+                        <p class="text-blue-100 text-sm">全新内核 AI 智能连接，3秒内直达全球最快网络。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex items-center gap-6 group hover:bg-white/20 transition">
+                    <div class="text-4xl">🛡️</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">行业领先，安全无忧</h3>
+                        <p class="text-blue-100 text-sm">Google 独立安全审核，不记录任何隐私轨迹。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex items-center gap-6 group hover:bg-white/20 transition">
+                    <div class="text-4xl">🌍</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">天涯海角，无不可达</h3>
+                        <p class="text-blue-100 text-sm">无限制访问全球资源，先进技术抹除一切访问痕迹。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-3xl flex items-center gap-6 group hover:bg-white/20 transition">
+                    <div class="text-4xl">📱</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">不限平台，无缝衔接</h3>
+                        <p class="text-blue-100 text-sm">一个账号多端共享，支持市面所有主流设备同时在线。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 px-6 bg-black/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-black mb-12">用户怎么说</h2>
+            <div class="glass-card p-10 rounded-[40px] relative">
+                <div id="slide-container">
+                    <div class="testimonial-slide active">
+                        <p class="text-2xl italic mb-6">"充钱之后物有所值！快连 Lets 依旧保持着极快的速度，秒开油管 4K8K 影片没问题！"</p>
+                        <cite class="text-blue-200 font-bold">— Michael Tang (Google Play)</cite>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="text-2xl italic mb-6">"速度快，内外网通吃。客服也超级好沟通，问题总能妥善解决。会一直用下去。"</p>
+                        <cite class="text-blue-200 font-bold">— 唐子墨 (Google Play)</cite>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="text-2xl italic mb-6">"Best Lets ! I tested almost all of them but this one worked best for me."</p>
+                        <cite class="text-blue-200 font-bold">— Amelia Brooke (App Store)</cite>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="text-2xl italic mb-6">"用了几年，身边朋友都用这个软件，非常稳定！客服都比较好，比较有耐心。"</p>
+                        <cite class="text-blue-200 font-bold">— Peng120842 (App Store)</cite>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="text-2xl italic mb-6">"Does what it promises. Always connects within 5 seconds. Amazing! best Lets I have ever used."</p>
+                        <cite class="text-blue-200 font-bold">— Robert One (Google Play)</cite>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 mt-8">
+                    <button onclick="prevSlide()" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/20 transition">←</button>
+                    <button onclick="nextSlide()" class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/20 transition">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download-section" class="py-24 px-6 text-center">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-black mb-4">立即开始畅玩全球</h2>
+            <p class="text-blue-100 mb-12 text-lg">72小时免费试用 · 1000+应用支持 · 多设备同时在线</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <button onclick="download('ios')" class="glass-card px-8 py-6 rounded-3xl hover:bg-white hover:text-blue-700 transition w-64 font-bold text-xl flex items-center justify-center gap-3 group">
+                    <i class="fab fa-apple text-2xl group-hover:text-blue-700"></i>
+                    iOS 下载
+                </button>
+                <button onclick="download('android')" class="glass-card px-8 py-6 rounded-3xl hover:bg-white hover:text-blue-700 transition w-64 font-bold text-xl flex items-center justify-center gap-3 group">
+                    <i class="fab fa-android text-2xl group-hover:text-blue-700"></i>
+                    Android 下载
+                </button>
+                <button onclick="download('mac')" class="glass-card px-8 py-6 rounded-3xl hover:bg-white hover:text-blue-700 transition w-64 font-bold text-xl flex items-center justify-center gap-3 group">
+                    <i class="fab fa-apple text-2xl group-hover:text-blue-700"></i>
+                    MacOS 下载
+                </button>
+                <button onclick="download('windows')" class="glass-card px-8 py-6 rounded-3xl hover:bg-white hover:text-blue-700 transition w-64 font-bold text-xl flex items-center justify-center gap-3 group">
+                    <i class="fab fa-windows text-2xl group-hover:text-blue-700"></i>
+                    Windows 下载
+                </button>
+            </div>
+            <div class="mt-12 flex flex-wrap justify-center gap-4 text-sm text-blue-200">
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle"></i> AppEsteem 认证</span>
+                <span class="flex items-center gap-2"><i class="fas fa-shield-alt"></i> 零日志隐私保护</span>
+                <span class="flex items-center gap-2"><i class="fas fa-headset"></i> 24h 真人客服</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-white/10 text-center text-blue-200 text-sm">
+        <p>© 2026 快连Lets 版权所有.</p>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        const LINKS = {
+            windows: 'https://example.com/letsvpn_setup.exe',
+            ios: 'https://apps.apple.com/app/letsvpn',
+            android: 'https://play.google.com/store/apps/details?id=com.letsvpn',
+            mac: 'https://example.com/letsvpn.dmg',
+            trial: 'https://example.com/get-trial'
+        };
+
+        function download(platform) {
+            let url = LINKS[platform];
+            if (url) {
+                console.log('正在跳转到下载页面:', url);
+                window.open(url, '_blank');
+            } else {
+                alert('下载链接即将上线，敬请期待！');
+            }
+        }
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        let autoInterval;
+
+        function showSlide(index) {
+            if (!slides.length) return;
+            slides.forEach(s => s.classList.remove('active'));
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() { 
+            showSlide(currentSlide + 1);
+            resetAutoPlay();
+        }
+        
+        function prevSlide() { 
+            showSlide(currentSlide - 1);
+            resetAutoPlay();
+        }
+        
+        function resetAutoPlay() {
+            if (autoInterval) clearInterval(autoInterval);
+            autoInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        }
+        
+        if (slides.length > 0) {
+            showSlide(0);
+            autoInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const offsetTop = targetElement.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        const navDownloadBtn = document.querySelector('nav a[href="#download-section"]');
+        if (navDownloadBtn) {
+            navDownloadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector('#download-section');
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+        const heroBtn = document.querySelector('header a[href="#download-section"]');
+        if (heroBtn) {
+            heroBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector('#download-section');
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
