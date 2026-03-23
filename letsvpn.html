@@ -6,8 +6,9 @@
     <title>快连Lets - 全球一键连接</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* 全新蓝色系渐变背景 - 清爽科技感 */
         body {
-            background: linear-gradient(135deg, #5127f8 0%, #8251f5 50%, #a457f3 100%);
+            background: linear-gradient(135deg, #0f2b5e 0%, #1a4a8a 50%, #2c6eb3 100%);
             background-attachment: fixed;
             color: white;
         }
@@ -22,6 +23,20 @@
         html {
             scroll-behavior: smooth;
         }
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a4a8a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60a5fa;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
     </style>
 </head>
 <body id="home" class="font-sans antialiased">
@@ -32,8 +47,8 @@
                 <img src="https://youqian2020.github.io/letslogo.png" alt="Logo" class="h-10 w-auto transition-transform group-hover:scale-110">
             </a>
             <div class="hidden md:flex items-center gap-8 font-medium">
-                <a href="#features" class="hover:text-blue-200 transition">核心优势</a>
-                <a href="#testimonials" class="hover:text-blue-200 transition">用户口碑</a>
+                <a href="#features" class="hover:text-sky-200 transition">核心优势</a>
+                <a href="#testimonials" class="hover:text-sky-200 transition">用户口碑</a>
                 <a href="#download-section" class="bg-white text-blue-700 px-6 py-2 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">立即拥有</a>
             </div>
         </div>
@@ -47,7 +62,7 @@
                     <span>已获得 AppEsteem 认证</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl font-black leading-tight">
-                   快连Lets <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">永远能连上</span>
+                   快连Lets <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-200 to-blue-100">永远能连上</span>
                 </h1>
                 <p class="text-xl text-blue-100 max-w-lg leading-relaxed">
                     3s 极速连接，采用全新 AI 内核，自动匹配全球最快节点，无论天涯海角，纵享丝滑冲浪。
